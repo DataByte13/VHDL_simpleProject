@@ -2,6 +2,7 @@
 *
 # except :
 !/*/
+!/*/*/
 !**/*.vhd
 !**/*.gitignore
 !**/*.html
