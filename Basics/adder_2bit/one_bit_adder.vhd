@@ -8,8 +8,9 @@ entity one_bit_adder is
     B :in  std_logic ;
     Cin : in std_logic;
     cout : out std_logic ;
-    sum : out std_logic 
-    );
+    sum : out std_logic; 
+    bitA : out std_logic  
+  );
 end one_bit_adder;
 architecture one_bit_adder_gate_level of one_bit_adder is
   signal A_XOR_B : std_logic;
@@ -21,4 +22,5 @@ begin
   Cin_AND_XORAB <= A_XOR_B and Cin;
   cout <= Cin_AND_XORAB or (A and B);
   sum <= A_XOR_B xor Cin;
+  bitA <= A and B ;
 end one_bit_adder_gate_level;

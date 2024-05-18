@@ -1,5 +1,0 @@
-set -tmpdir "/home/kk_gorbee/Documents/project/VHDL/init/Basics/adder_2bit/xst/projnav.tmp"
-set -xsthdpdir "/home/kk_gorbee/Documents/project/VHDL/init/Basics/adder_2bit/xst"
-elaborate
--ifn one_bit_adder.prj
--ifmt mixed

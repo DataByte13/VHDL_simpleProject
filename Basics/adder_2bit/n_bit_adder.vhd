@@ -5,10 +5,13 @@ use IEEE.numeric_std.all;
 entity n_bit_adder is 
   generic (Number_Of_Inputs : positive := 4 );
   port (
-    Inputs : in std_logic_vector(Number_Of_Inputs-1 downto 0);
-    Cout : out std_logic;
-    Sum : out std_logic_vector(Number_Of_Inputs-1 downto 0)
-    );
+    A_Inputs : in std_logic_vector(Number_Of_Inputs-1 downto 0);
+    B_Inputs : in std_logic_vector(Number_Of_Inputs-1 downto 0);
+   -- Cins : out std_logic_vector(Number_Of_Inputs downto 0);
+    cout : out std_logic ;
+    Sum : out std_logic_vector(Number_Of_Inputs-1 downto 0);
+    tmp : out std_logic 
+  );
 end n_bit_adder;
 
 architecture n_bit_adder_gate_level of n_bit_adder is 
@@ -18,24 +21,26 @@ architecture n_bit_adder_gate_level of n_bit_adder is
       B :in  std_logic ;
       Cin : in std_logic;
       cout : out std_logic ;
-      sum : out std_logic 
+      sum : out std_logic ;
+      bitA : out std_logic
     );
   end component; 
   signal count : std_logic := '0';
-  signal tmp : std_logic ;
+  signal icin : std_logic_vector(Number_Of_Inputs downto 0);
 
-begin
+begin 
+  icin(0) <= '0';
 		gen_adder:  for i in 0 to Number_Of_Inputs-1 generate 
-			tmp <= count;
-			one_bit_instance : one_bit_adder
+      one_bit_instance : one_bit_adder
 				port map (
-					A => Inputs(i),
-					B => Inputs(i),
-					Cin => tmp,
-					cout => count,
-					sum => Sum(i)
+					A => A_Inputs(i),
+					B => B_Inputs(i),
+          Cin => icin(i),
+					cout => icin(i+1),
+					sum => Sum(i),
+          bitA => tmp
 				);
+
 		end generate;
-		Cout <= tmp;
 end n_bit_adder_gate_level;
 
