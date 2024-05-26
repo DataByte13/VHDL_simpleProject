@@ -1,4 +1,4 @@
-library library IEEE;
+library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 entity gp is 
@@ -7,15 +7,15 @@ entity gp is
     result : out std_logic
     );
 end gp ;
-architecture gp of gp is 
-  signal temp : std_logic;
+architecture gp_arch of gp is 
+  signal temp : std_logic_vector(8 downto 0);
 begin 
   process(input)
-  temp <= '0';
   begin 
-    for i in 0 to 7 loop 
-      temp <= temp xor input(i);
+    temp(0) <= '0';
+    for i in 0 to 7 loop
+      temp(i+1) <= temp(i) xor input(i);
     end loop;
-    result <= temp;
+    result <= temp(8);
   end process ;
-end gp;
+end gp_arch;
