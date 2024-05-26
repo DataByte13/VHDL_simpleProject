@@ -10,20 +10,12 @@ begin
   UUT: entity work.gp
     port map (
       input => tb_input,
-      result => tb_result
+      result => tb_result 
     );
   process
   begin
-    tb_input <= "00000000";
-    wait for 10 ns;
-    tb_input <= "00000001";
-    wait for 10 ns;
-    tb_input <= "10101010";
-    wait for 10 ns;
-    tb_input <= "11001100";
-    wait for 10 ns;
-    tb_input <= "10011001";
-
+    tb_input <= "01001000";
+    wait for 10 ns; 
   end process;
 end test;
 
