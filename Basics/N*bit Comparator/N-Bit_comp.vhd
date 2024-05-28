@@ -35,7 +35,12 @@ begin
   process(greater , equal , lower)
   begin 
     for i in n-1 downto 0 loop 
-      if greater(i) = '1' then 
+      if equal(i) = '1' then 
+        resultFlag_G <= '0';
+        resultFlag_E<= '1';
+        resultFlag_L<= '0';
+        next;
+      elsif greater(i) = '1' then 
         resultFlag_G <= '1';
         resultFlag_E<= '0';
         resultFlag_L<= '0';
@@ -44,9 +49,7 @@ begin
         resultFlag_G<= '0';
         resultFlag_E<= '0';
         resultFlag_L<= '1';
-        exit;
-      else  
-        next ;
+        exit; 
       end if;
     end loop;
   end process ;
