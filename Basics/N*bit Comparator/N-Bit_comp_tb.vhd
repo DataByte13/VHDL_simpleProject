@@ -3,6 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 entity compar_nbit_tb is 
 end compar_nbit_tb;
+
 architecture behavoral of compar_nbit_tb is 
   signal input1 , input2  : std_logic_vector(7 downto 0) :="00000000";
   signal g ,e ,l : std_logic := '0';

@@ -10,6 +10,7 @@ entity compar_1Bit is
     flags_L : out std_logic
        );
 end compar_1Bit ;
+
 architecture compar_1Bit_arch of compar_1Bit is
   signal greater , lower , equal : std_logic := '0';
 begin 

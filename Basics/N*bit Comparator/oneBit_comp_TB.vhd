@@ -3,6 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 entity oneBit_comp_tb is 
 end oneBit_comp_tb;
+
 architecture behavioral of oneBit_comp_tb is 
   signal input1 , input2 , e , g , l : std_logic := '0';
 begin 
