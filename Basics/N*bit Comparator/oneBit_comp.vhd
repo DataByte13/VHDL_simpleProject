@@ -1,6 +1,6 @@
 library ieee ;
-use ieee.std_logic_1164.all
-use ieee.numeric_std.all
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 entity compar_1Bit is 
   port (
     in1 : in std_logic ;
@@ -10,21 +10,16 @@ entity compar_1Bit is
     flags_L : out std_logic
        );
 end compar_1Bit ;
-architecture compar_1Bit_arch of compar_1Bit is 
+architecture compar_1Bit_arch of compar_1Bit is
+  signal greater , lower , equal : std_logic := '0';
 begin 
   process(in1 , in2)
   begin 
-    if (in1 and (not in2)) then 
-      flags_G <= '1';
-      flags_E <= '0';
-      flags_L <= '0';
-    elsif ((not in1 ) and in2) then 
-      flags_G <= '0';
-      flags_E <= '0';
-      flags_L <= '1';
-    else 
-      flags_G <= '0';
-      flags_E <= '1';
-      flags_L <= '0';
-    end if 
-  end process 
+    greater <= in1 and (not in2) ;
+    lower <= (not in1 ) and in2;
+    equal <=   (in1 and (not in2)) nor ((not in1 ) and in2); 
+  end process;
+  flags_G <= greater;
+  flags_L <= lower;
+  flags_E <= equal;
+end compar_1Bit_arch;
